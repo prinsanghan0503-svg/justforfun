@@ -1,0 +1,137 @@
+/* RESET */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #1a0000, #000000);
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+/* FADE-IN EFFECT */
+body {
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* CONTAINER */
+.container {
+  text-align: center;
+  max-width: 90%;
+  z-index: 2;
+}
+
+/* IMAGE */
+img {
+  width: 220px;
+  max-width: 80%;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(255, 0, 100, 0.7);
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* TITLE */
+h1 {
+  font-size: 2.6rem;
+  margin: 10px 0;
+
+  background: linear-gradient(90deg, #ff4d6d, #ff0040, #ff4d6d);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  animation: glow 2s infinite alternate, pulse 1.5s infinite;
+}
+
+/* HEARTBEAT EFFECT */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* GLOW */
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff0040; }
+  to { text-shadow: 0 0 30px #ff4d6d; }
+}
+
+/* SUBTEXT */
+p {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+/* BUTTONS */
+.btn a, .btn button {
+  padding: 12px 30px;
+  margin: 10px;
+  border-radius: 30px;
+  border: none;
+
+  background: linear-gradient(45deg, #ff0040, #ff4d6d);
+  color: white;
+
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+/* BUTTON HOVER */
+.btn a:hover, .btn button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px #ff0040;
+}
+
+/* FLOATING HEART PARTICLE */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+}
+
+/* BACKGROUND PARTICLES */
+.particle {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: #ff4d6d;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: moveParticles 10s linear infinite;
+}
+
+@keyframes moveParticles {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+.emoji {
+  color: white;
+  text-shadow: none;
+  background: none;
+  font-size: 1.2em;
+}
