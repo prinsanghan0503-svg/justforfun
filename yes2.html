@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>❤️</title>
 
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8XXSQ7PEGT"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -17,19 +18,74 @@ body {
   margin:0;
   background:black;
   color:white;
+  font-family: 'Poppins', sans-serif;
+
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
   text-align:center;
+  padding:20px;
+}
+
+/* container */
+.box {
+  max-width:600px;
+}
+
+/* title */
+h1 {
+  font-size:34px;
+  margin-bottom:20px;
+}
+
+/* message */
+p {
+  font-size:18px;
+  color:#ccc;
+  line-height:1.6;
+  margin-bottom:15px;
+}
+
+/* subtle fade-in */
+.fade {
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div>
-  <h1>❤️ I knew you love me</h1>
+<div class="box">
+
+<h1 class="fade">❤️ I knew you love me</h1>
+
+<p class="fade" style="animation-delay:0.5s;">
+Thank you for accepting me… it really means a lot to me 🤍
+</p>
+
+<p class="fade" style="animation-delay:1s;">
+I promise I’ll always respect you, support you, and never disturb your focus—  
+especially in your studies and your goals.
+</p>
+
+<p class="fade" style="animation-delay:1.5s;">
+Your dreams and your success matter to me just as much as you do.
+</p>
+
+<p class="fade" style="animation-delay:2s;">
+I’ll always stand by you… quietly, genuinely, and with full support.
+</p>
+
 </div>
 
 <script>
