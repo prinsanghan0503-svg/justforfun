@@ -4,80 +4,26 @@
 <meta charset="UTF-8">
 <title>Wait...</title>
 <link rel="stylesheet" href="style.css">
-
-<style>
-body {
-  overflow: hidden;
-}
-
-/* Fade overlay */
-#fade {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:black;
-  opacity:0;
-  transition:1.5s;
-  z-index:5;
-}
-
-/* Message text */
-#text {
-  position: fixed;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  width:80%;
-  max-width:600px;
-  text-align:center;
-  line-height:1.7;
-  font-size:18px;
-  opacity:0;
-  z-index:10;
-}
-
-/* Final buttons */
-#buttons {
-  position: fixed;
-  bottom:12%;
-  width:100%;
-  text-align:center;
-  opacity:0;
-  z-index:10;
-}
-</style>
 </head>
 
 <body>
 
-<!-- FUN SCREEN -->
 <div class="container" id="fun">
   <h1>So finally… YES? 😄</h1>
   <div class="btn">
-    <!-- IMPORTANT FIX -->
     <button onclick="startSerious()">YES ❤️</button>
   </div>
 </div>
 
-<!-- OVERLAY -->
 <div id="fade"></div>
-
-<!-- MESSAGE -->
 <div id="text"></div>
 
-<!-- FINAL YES / NO -->
 <div id="buttons" class="btn">
   <button onclick="yesClick()">YES ❤️</button>
   <button onclick="noClick()">NO 💔</button>
 </div>
 
-<audio id="music" src="audio.mp3"></audio>
-
 <script>
-// ===== FINAL SCRIPT (WORKING) =====
-
 const message = `Hey… wait ❤️
 
 I know this whole thing was a bit fun and tricky 😅  
@@ -95,37 +41,23 @@ Whatever your answer is, I will accept it with full respect.
 Just honesty 💫`;
 
 function startSerious() {
-  const fun = document.getElementById("fun");
-  const fade = document.getElementById("fade");
+  document.getElementById("fun").style.display = "none";
+  document.getElementById("fade").style.opacity = 1;
+
   const text = document.getElementById("text");
-  const music = document.getElementById("music");
+  text.style.opacity = 1;
 
-  fun.style.display = "none";
-  fade.style.opacity = 1;
-
-  text.innerHTML = "";
-
-  setTimeout(() => {
-    text.style.opacity = 1;
-    typeText(message, text, 28);
-    if (music) music.play();
-  }, 1200);
-}
-
-function typeText(msg, el, speed) {
   let i = 0;
-
-  function typing() {
-    if (i < msg.length) {
-      el.innerHTML += msg.charAt(i);
+  function type() {
+    if (i < message.length) {
+      text.innerHTML += message.charAt(i);
       i++;
-      setTimeout(typing, speed);
+      setTimeout(type, 25);
     } else {
       document.getElementById("buttons").style.opacity = 1;
     }
   }
-
-  typing();
+  type();
 }
 
 function yesClick() {
@@ -136,8 +68,6 @@ function noClick() {
   window.location.href = "noFinal.html";
 }
 </script>
-
-<script src="vfx.js"></script>
 
 </body>
 </html>
