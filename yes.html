@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Wait...</title>
+<title>...</title>
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -13,14 +13,13 @@
   width:100%;
   height:100%;
   background:black;
-  opacity:0;
-  transition:1s;
+  opacity:1; /* start already black */
   z-index:5;
 }
 
 #text {
   position: fixed;
-  top:50%;
+  top:40%;
   left:50%;
   transform: translate(-50%, -50%);
   width:80%;
@@ -32,9 +31,19 @@
   z-index:10;
 }
 
+#question {
+  position: fixed;
+  top:65%;
+  width:100%;
+  text-align:center;
+  font-size:20px;
+  opacity:0;
+  z-index:10;
+}
+
 #buttons {
   position: fixed;
-  bottom:15%;
+  bottom:10%;
   width:100%;
   text-align:center;
   opacity:0;
@@ -45,49 +54,40 @@
 
 <body>
 
-<div class="container" id="fun">
-  <h1>So finally… YES? 😄</h1>
-  <div class="btn">
-    <button onclick="startSerious()">YES ❤️</button>
-  </div>
-</div>
-
+<!-- EMPTY START (no extra screen) -->
 <div id="fade"></div>
 <div id="text"></div>
+<div id="question"></div>
 
 <div id="buttons" class="btn">
   <button onclick="yesClick()">YES ❤️</button>
   <button onclick="noClick()">NO 💔</button>
 </div>
 
-<audio id="music" src="audio.mp3"></audio>
-
 <script>
+
 const message = `Hey… wait ❤️
 
 I know this whole thing was a bit fun and tricky 😅  
 But now, I want to be completely real with you.
 
-Sorry if this felt like I forced the moment… that was never my intention.
+Sorry if this felt like I forced the moment… that was never my intention.`;
 
-So let me ask you properly this time—
 
-Do you genuinely feel the same way?
+const finalQuestion = `Give me an honest reply…
 
-You can say YES or NO.  
-Whatever your answer is, I will accept it with full respect.
+Do you love me?`;
 
-Just honesty 💫`;
 
-function startSerious() {
-  const fun = document.getElementById("fun");
-  const fade = document.getElementById("fade");
+// START AUTOMATICALLY WHEN PAGE LOADS
+window.onload = () => {
+  startTyping();
+};
+
+
+function startTyping() {
   const text = document.getElementById("text");
 
-  fun.style.display = "none";
-  fade.style.opacity = 1;
-
-  text.innerHTML = "";
   text.style.opacity = 1;
 
   let i = 0;
@@ -98,15 +98,24 @@ function startSerious() {
       i++;
       setTimeout(type, 25);
     } else {
-      document.getElementById("buttons").style.opacity = 1;
+      showQuestion();
     }
   }
 
   type();
-
-  const music = document.getElementById("music");
-  if (music) music.play();
 }
+
+
+function showQuestion() {
+  const q = document.getElementById("question");
+  q.innerText = finalQuestion;
+  q.style.opacity = 1;
+
+  setTimeout(() => {
+    document.getElementById("buttons").style.opacity = 1;
+  }, 600);
+}
+
 
 function yesClick() {
   window.location.href = "yes2.html";
@@ -115,6 +124,7 @@ function yesClick() {
 function noClick() {
   window.location.href = "noFinal.html";
 }
+
 </script>
 
 <script src="vfx.js"></script>
