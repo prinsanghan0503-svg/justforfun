@@ -13,7 +13,7 @@ body {
   overflow: hidden;
 }
 
-/* FADE-IN EFFECT */
+/* FADE-IN */
 body {
   animation: fadeIn 1.5s ease;
 }
@@ -40,7 +40,7 @@ img {
   animation: float 3s ease-in-out infinite;
 }
 
-/* FLOAT ANIMATION */
+/* FLOAT */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -59,7 +59,7 @@ h1 {
   animation: glow 2s infinite alternate, pulse 1.5s infinite;
 }
 
-/* HEARTBEAT EFFECT */
+/* HEARTBEAT */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
@@ -72,7 +72,7 @@ h1 {
   to { text-shadow: 0 0 30px #ff4d6d; }
 }
 
-/* SUBTEXT */
+/* TEXT */
 p {
   color: #ccc;
   font-size: 1.1rem;
@@ -96,25 +96,18 @@ p {
   transition: 0.3s;
 }
 
-/* BUTTON HOVER */
+/* HOVER */
 .btn a:hover, .btn button:hover {
   transform: scale(1.15);
   box-shadow: 0 0 25px #ff0040;
 }
 
-/* FLOATING HEART PARTICLE */
+/* PARTICLES */
 @keyframes floatUp {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-80px);
-    opacity: 0;
-  }
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-80px); opacity: 0; }
 }
 
-/* BACKGROUND PARTICLES */
 .particle {
   position: fixed;
   width: 5px;
@@ -129,9 +122,47 @@ p {
   from { transform: translateY(100vh); }
   to { transform: translateY(-10vh); }
 }
+
+/* EMOJI FIX */
 .emoji {
   color: white;
   text-shadow: none;
   background: none;
-  font-size: 1.2em;
+}
+
+/* ========================= */
+/* 🔥 FINAL PAGE SUPPORT */
+/* ========================= */
+
+#fade {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  transition: 1.5s;
+  z-index: 5;
+}
+
+#text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.7;
+  font-size: 18px;
+  opacity: 0;
+  z-index: 10;
+}
+
+#buttons {
+  position: absolute;
+  bottom: 15%;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  z-index: 10;
 }
