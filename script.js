@@ -67,3 +67,4 @@ document.addEventListener("DOMContentLoaded", () => {
     startBtn.addEventListener("click", startSerious);
   }
 });
+gtag('event', 'opened_yes_page');
