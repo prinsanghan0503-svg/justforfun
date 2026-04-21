@@ -4,10 +4,48 @@
 <meta charset="UTF-8">
 <title>Wait...</title>
 <link rel="stylesheet" href="style.css">
+
+<style>
+#fade {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  opacity:0;
+  transition:1s;
+  z-index:5;
+}
+
+#text {
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:80%;
+  max-width:600px;
+  text-align:center;
+  line-height:1.7;
+  font-size:18px;
+  opacity:0;
+  z-index:10;
+}
+
+#buttons {
+  position: fixed;
+  bottom:15%;
+  width:100%;
+  text-align:center;
+  opacity:0;
+  z-index:10;
+}
+</style>
 </head>
 
 <body>
 
+<!-- FUN SCREEN -->
 <div class="container" id="fun">
   <h1>So finally… YES? 😄</h1>
   <div class="btn">
@@ -15,9 +53,13 @@
   </div>
 </div>
 
+<!-- OVERLAY -->
 <div id="fade"></div>
+
+<!-- MESSAGE -->
 <div id="text"></div>
 
+<!-- FINAL CHOICE -->
 <div id="buttons" class="btn">
   <button onclick="yesClick()">YES ❤️</button>
   <button onclick="noClick()">NO 💔</button>
@@ -41,13 +83,18 @@ Whatever your answer is, I will accept it with full respect.
 Just honesty 💫`;
 
 function startSerious() {
-  document.getElementById("fun").style.display = "none";
-  document.getElementById("fade").style.opacity = 1;
-
+  const fun = document.getElementById("fun");
+  const fade = document.getElementById("fade");
   const text = document.getElementById("text");
+
+  fun.style.display = "none";
+  fade.style.opacity = 1;
+
+  text.innerHTML = "";
   text.style.opacity = 1;
 
   let i = 0;
+
   function type() {
     if (i < message.length) {
       text.innerHTML += message.charAt(i);
@@ -57,6 +104,7 @@ function startSerious() {
       document.getElementById("buttons").style.opacity = 1;
     }
   }
+
   type();
 }
 
@@ -68,6 +116,8 @@ function noClick() {
   window.location.href = "noFinal.html";
 }
 </script>
+
+<script src="vfx.js"></script>
 
 </body>
 </html>
