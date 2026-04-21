@@ -198,3 +198,17 @@ p {
   opacity:0;
   z-index:10;
 }
+/* VFX above fade */
+.particle {
+  z-index: 8 !important;
+}
+
+/* Text & buttons above everything */
+#text, #question, #buttons {
+  z-index: 10;
+}
+
+/* Fade behind particles */
+#fade {
+  z-index: 5;
+}

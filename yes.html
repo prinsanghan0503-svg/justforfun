@@ -13,7 +13,7 @@
   width:100%;
   height:100%;
   background:black;
-  opacity:1; /* start already black */
+  opacity:0; /* start already black */
   z-index:5;
 }
 
@@ -81,9 +81,11 @@ Do you love me?`;
 
 // START AUTOMATICALLY WHEN PAGE LOADS
 window.onload = () => {
-  startTyping();
+  setTimeout(() => {
+    document.getElementById("fade").style.opacity = 1;
+    startTyping();
+  }, 300);
 };
-
 
 function startTyping() {
   const text = document.getElementById("text");
