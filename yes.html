@@ -10,7 +10,7 @@ body {
   overflow: hidden;
 }
 
-/* overlay */
+/* Fade overlay */
 #fade {
   position: fixed;
   top:0;
@@ -23,7 +23,7 @@ body {
   z-index:5;
 }
 
-/* text */
+/* Message text */
 #text {
   position: fixed;
   top:50%;
@@ -38,7 +38,7 @@ body {
   z-index:10;
 }
 
-/* buttons */
+/* Final buttons */
 #buttons {
   position: fixed;
   bottom:12%;
@@ -56,17 +56,18 @@ body {
 <div class="container" id="fun">
   <h1>So finally… YES? 😄</h1>
   <div class="btn">
-    <button id="yesStartBtn">YES ❤️</button>
+    <!-- IMPORTANT FIX -->
+    <button onclick="startSerious()">YES ❤️</button>
   </div>
 </div>
 
 <!-- OVERLAY -->
 <div id="fade"></div>
 
-<!-- TEXT -->
+<!-- MESSAGE -->
 <div id="text"></div>
 
-<!-- FINAL BUTTONS -->
+<!-- FINAL YES / NO -->
 <div id="buttons" class="btn">
   <button onclick="yesClick()">YES ❤️</button>
   <button onclick="noClick()">NO 💔</button>
@@ -74,7 +75,68 @@ body {
 
 <audio id="music" src="audio.mp3"></audio>
 
-<script src="script.js"></script>
+<script>
+// ===== FINAL SCRIPT (WORKING) =====
+
+const message = `Hey… wait ❤️
+
+I know this whole thing was a bit fun and tricky 😅  
+But now, I want to be completely real with you.
+
+Sorry if this felt like I forced the moment… that was never my intention.
+
+So let me ask you properly this time—
+
+Do you genuinely feel the same way?
+
+You can say YES or NO.  
+Whatever your answer is, I will accept it with full respect.
+
+Just honesty 💫`;
+
+function startSerious() {
+  const fun = document.getElementById("fun");
+  const fade = document.getElementById("fade");
+  const text = document.getElementById("text");
+  const music = document.getElementById("music");
+
+  fun.style.display = "none";
+  fade.style.opacity = 1;
+
+  text.innerHTML = "";
+
+  setTimeout(() => {
+    text.style.opacity = 1;
+    typeText(message, text, 28);
+    if (music) music.play();
+  }, 1200);
+}
+
+function typeText(msg, el, speed) {
+  let i = 0;
+
+  function typing() {
+    if (i < msg.length) {
+      el.innerHTML += msg.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    } else {
+      document.getElementById("buttons").style.opacity = 1;
+    }
+  }
+
+  typing();
+}
+
+function yesClick() {
+  window.location.href = "yes2.html";
+}
+
+function noClick() {
+  window.location.href = "noFinal.html";
+}
+</script>
+
 <script src="vfx.js"></script>
 
 </body>
