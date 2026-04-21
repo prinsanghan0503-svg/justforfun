@@ -4,17 +4,26 @@
 <meta charset="UTF-8">
 <title>Wait...</title>
 
-<link rel="stylesheet" href="style.css">
-
 <style>
 body {
   margin:0;
-  background:black;
+  background:#111;
   color:white;
   font-family:'Poppins', sans-serif;
   overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  flex-direction:column;
 }
 
+/* Fun section */
+#fun {
+  text-align:center;
+}
+
+/* Fade overlay */
 #fade {
   position:fixed;
   width:100%;
@@ -22,8 +31,10 @@ body {
   background:black;
   opacity:0;
   transition:1.5s;
+  z-index:10;
 }
 
+/* Serious text */
 #text {
   position:absolute;
   top:50%;
@@ -35,8 +46,10 @@ body {
   font-size:18px;
   opacity:0;
   transition:1s;
+  z-index:20;
 }
 
+/* Buttons */
 #buttons {
   text-align:center;
   margin-top:30px;
@@ -60,10 +73,19 @@ button {
 
 <body>
 
+<!-- FUN PART -->
+<div id="fun">
+  <h2>So finally… YES? 😄</h2>
+  <button onclick="startSerious()">YES ❤️</button>
+</div>
+
+<!-- FADE -->
 <div id="fade"></div>
 
+<!-- SERIOUS TEXT -->
 <div id="text"></div>
 
+<!-- FINAL BUTTONS -->
 <div id="buttons">
   <button class="yes" onclick="yesClick()">YES ❤️</button>
   <button class="no" onclick="noClick()">NO 💔</button>
@@ -89,11 +111,16 @@ Whatever your answer is, I will accept it with full respect. No pressure. No exp
 
 Just honesty 💫`;
 
-window.onload = () => {
+function startSerious() {
+  const fun = document.getElementById("fun");
   const fade = document.getElementById("fade");
   const text = document.getElementById("text");
   const music = document.getElementById("music");
 
+  // Hide fun part
+  fun.style.display = "none";
+
+  // Fade to black
   fade.style.opacity = 1;
 
   setTimeout(() => {
@@ -101,7 +128,7 @@ window.onload = () => {
     typeText(message, text, 30);
     music.play();
   }, 1200);
-};
+}
 
 function typeText(msg, el, speed) {
   let i = 0;
