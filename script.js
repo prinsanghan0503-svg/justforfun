@@ -20,6 +20,9 @@ function startSerious() {
   const text = document.getElementById("text");
   const music = document.getElementById("music");
 
+  // 🛑 SAFETY CHECK (THIS FIXES YOUR BUG)
+  if (!fun || !fade || !text) return;
+
   fun.style.display = "none";
   fade.style.opacity = 1;
 
@@ -41,7 +44,8 @@ function typeText(msg, el, speed) {
       i++;
       setTimeout(typing, speed);
     } else {
-      document.getElementById("buttons").style.opacity = 1;
+      const btns = document.getElementById("buttons");
+      if (btns) btns.style.opacity = 1;
     }
   }
 
