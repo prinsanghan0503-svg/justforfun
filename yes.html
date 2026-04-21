@@ -45,7 +45,6 @@
 
 <body>
 
-<!-- FUN SCREEN -->
 <div class="container" id="fun">
   <h1>So finally… YES? 😄</h1>
   <div class="btn">
@@ -53,17 +52,15 @@
   </div>
 </div>
 
-<!-- OVERLAY -->
 <div id="fade"></div>
-
-<!-- MESSAGE -->
 <div id="text"></div>
 
-<!-- FINAL CHOICE -->
 <div id="buttons" class="btn">
   <button onclick="yesClick()">YES ❤️</button>
   <button onclick="noClick()">NO 💔</button>
 </div>
+
+<audio id="music" src="audio.mp3"></audio>
 
 <script>
 const message = `Hey… wait ❤️
@@ -106,6 +103,9 @@ function startSerious() {
   }
 
   type();
+
+  const music = document.getElementById("music");
+  if (music) music.play();
 }
 
 function yesClick() {
