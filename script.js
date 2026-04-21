@@ -59,3 +59,11 @@ function yesClick() {
 function noClick() {
   window.location.href = "noFinal.html";
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const startBtn = document.getElementById("yesStartBtn");
+
+  if (startBtn) {
+    startBtn.addEventListener("click", startSerious);
+  }
+});
